@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --accent:       #dbe722;
+  --accent-dark:  #bec91e;
+  --canvas:       #0A0A0A;
+  --raised:       #111111;
+  --card:         #141414;
+  --line:         #1F1F1F;
+  --line-hover:   #2A2A2A;
+  --ink:          #F5F5F0;
+  --ink-muted:    #8A8A85;
+  --ink-dim:      #5A5A55;
+}
+
+/* Custom design-token utilities — hover:/focus: variants work automatically */
+@layer utilities {
+  .bg-canvas       { background-color: var(--canvas); }
+  .bg-raised       { background-color: var(--raised); }
+  .bg-card         { background-color: var(--card); }
+  .bg-accent       { background-color: var(--accent); }
+  .bg-accent-dark  { background-color: var(--accent-dark); }
+
+  .text-canvas     { color: var(--canvas); }
+  .text-ink        { color: var(--ink); }
+  .text-ink-muted  { color: var(--ink-muted); }
+  .text-ink-dim    { color: var(--ink-dim); }
+  .text-accent     { color: var(--accent); }
+
+  .border-line       { border-color: var(--line); }
+  .border-line-hover { border-color: var(--line-hover); }
+  .border-accent     { border-color: var(--accent); }
+
+  .font-display { font-family: 'Archivo', sans-serif; }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* font-stretch has no Tailwind utility — keep as a class */
+.display-tight {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  font-stretch: 125%;
+}
+
+/* JS-driven scroll animations via IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
